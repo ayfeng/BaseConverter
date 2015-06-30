@@ -7,8 +7,6 @@ int main() {
     std::string repeat;
 
     while(repeat != "n") {
-        std::cout << "Welcome to Andy's base conversion program." << std::endl;
-
         std::cout << "Please enter a number you would like to convert: ";
         std::cin >> input_num;
 
