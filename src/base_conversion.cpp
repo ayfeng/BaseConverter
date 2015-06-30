@@ -6,7 +6,7 @@
 const std::string value_map = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 unsigned long convert_nbase_to_decimal(const std::string& original, int from_base) {
-    int rindex = 0;
+    int rindex = 0; //keep track of which index we are on, rightmost=0, leftmost=n-1 of an n-length string
     unsigned long result = 0;
 
     for (std::string::const_reverse_iterator it = original.rbegin(); it != original.rend(); ++it, ++rindex) {
@@ -28,4 +28,21 @@ std::string convert_decimal_to_nbase(unsigned long original, int to_base) {
     }
 
     return result;
+}
+
+std::string convert_base(const std::string& original, int from_base, int to_base) {
+    unsigned long original_number;
+    if (from_base == to_base) //immediately return on same bases
+        return original;
+
+    if (from_base == 10) {
+        std::stringstream ss;
+        ss << from_base;
+        ss >> original_number;
+        ss.str(""); //clear stringstream
+    } else {
+        original_number = convert_nbase_to_decimal(original, from_base);
+    }
+
+    return convert_decimal_to_nbase(original_number, to_base);
 }

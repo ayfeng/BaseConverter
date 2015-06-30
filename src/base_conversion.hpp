@@ -5,4 +5,6 @@ unsigned long convert_nbase_to_decimal(const std::string& original, int from_bas
 
 std::string convert_decimal_to_nbase(unsigned long original, int to_base);
 
+std::string convert_base(const std::string& original, int from_base, int to_base);
+
 #endif
